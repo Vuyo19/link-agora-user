@@ -21,23 +21,40 @@ export default function EventModal() {
   );
 
   const [showPrimaryModal, setShowPrimaryModal] = useState(true); // State for primary modal
-  const [showCurrentModal, setShowCurrentModal] = useState(false); // State for current modal
+  const [showSecondaryModal, setShowSecondaryModal] = useState(false); // State for secondary modal
+  const [showThirdModal, setShowThirdModal] = useState(false); // State for third modal
 
-  function handleNextClick() {
+  function handleNext1Click() {
     setShowPrimaryModal(false); // Close the primary modal
-    setShowCurrentModal(true); // Open the current modal
+    setShowSecondaryModal(true); // Open the second modal
   }
 
-  function handlePreviousClick() {
-    setShowCurrentModal(false); // Close the current modal
+  function handleNext2Click() {
+    setShowSecondaryModal(false); // Close the secondary modal
+    setShowThirdModal(true); // Open the third modal
+  }
+
+  function handlePrevious1Click() {
     setShowPrimaryModal(true); // Reopen the primary modal
+    setShowSecondaryModal(false); // Close the current modal
+  }
+
+  function handlePrevious2Click() {
+    setShowSecondaryModal(true); // Reopen the secondary modal
+    setShowThirdModal(false); // Close the current modal
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const calendarEvent = {
       title,
+      time,
       description,
+      eventType,
+      venue,
+      address1,
+      address2,
+      capacity,
       label: selectedLabel,
       day: daySelected.valueOf(),
       id: selectedEvent ? selectedEvent.id : Date.now(),
@@ -59,6 +76,7 @@ export default function EventModal() {
         className="fixed left-0 top-0 w-full h-full bg-black opacity-40 z-10"
         onClick={() => setShowEventModal(false)} // Close modal on overlay click
       ></div>
+
 
       {/* First Modal */}
       {showPrimaryModal && (
@@ -206,7 +224,7 @@ export default function EventModal() {
           <footer className="flex justify-end border-t p-3 mt-5">
             <button
               type="submit"
-              onClick={handleNextClick}
+              onClick={handleNext1Click}
               className="bg-[#8A2623] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
             >
               Next
@@ -214,9 +232,125 @@ export default function EventModal() {
           </footer>
         </form>
 
-        // Second Modal
       )}
-      {showCurrentModal && (
+
+            {/* Second Modal */}
+            {showSecondaryModal && (
+        <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
+          <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
+            <div>
+              {selectedEvent && (
+                <span
+                  onClick={() => {
+                    dispatchCalEvent({
+                      type: "delete",
+                      payload: selectedEvent,
+                    });
+                    setShowEventModal(false);
+                  }}
+                  className="material-icons-outlined text-gray-400 cursor-pointer"
+                >
+                  delete
+                </span>
+              )}
+            </div>
+            <button onClick={() => setShowEventModal(false)}>
+              <X
+                size={28}
+                className="text-gray-600 mx-2 cursor-pointer rounded-md hover:border-[#007f66]"
+              />
+            </button>
+          </header>
+          <div className="flex items-center justify-center">
+            <p className="font-medium text-[#007f66] text-center text-xl w-72 h-8">
+              {daySelected.format("dddd, MMMM DD")}
+            </p>
+          </div>
+          <div className="p-5">
+            <div className="flex items-center">
+              <label
+                htmlFor="title"
+                className="text-base font-medium text-gray-900 mr-4"
+              >
+                Venue
+              </label>
+              <div className="mt-2.5 relative">
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={title}
+                  required
+                  placeholder="Enter the event title"
+                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <label
+                htmlFor="title"
+                className="text-base font-medium text-gray-900 mr-4"
+              >
+                Potential Capacity
+              </label>
+              <div className="mt-2.5 relative">
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={title}
+                  required
+                  placeholder="Enter the event title"
+                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="flex items-center">
+              <label
+                htmlFor="title"
+                className="text-base font-medium text-gray-900 mr-4"
+              >
+                Address 1
+              </label>
+              <div className="mt-2.5 relative">
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={title}
+                  required
+                  placeholder="Enter the event title"
+                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+            </div>
+
+          </div>
+          <footer className="flex justify-end border-t p-3 mt-5">
+            <button
+              type="button"
+              onClick={handlePrevious1Click} // Previous 
+              className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded text-gray-600 w-full ml-12 mt-4 mb-4"
+            >
+              Previous
+            </button>
+            <button
+              type="submit"
+              onClick={handleNext2Click} // Next 
+              className="bg-[#01663E] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
+            >
+              Next
+            </button>
+          </footer>
+        </form>
+      )}
+
+      {/* Third Modal */}
+      {showThirdModal && (
         <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
           <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
             <div>
@@ -314,14 +448,14 @@ export default function EventModal() {
           <footer className="flex justify-end border-t p-3 mt-5">
             <button
               type="button"
-              onClick={handlePreviousClick}
+              onClick={handlePrevious2Click} // Previous 
               className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded text-gray-600 w-full ml-12 mt-4 mb-4"
             >
               Previous
             </button>
             <button
               type="submit"
-              onClick={handleSubmit}
+              onClick={handleSubmit} // Submit 
               className="bg-[#01663E] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
             >
               Request
