@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { X } from "lucide-react";
 import { AiFillStar } from "react-icons/ai";
-import TimePicker from "./Timepicker";
+// import TimePicker from "./Timepicker";
 
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -134,9 +134,10 @@ export default function EventModal() {
 
 {/* Time picker */}
 
+{/* 
 <div className="mt-5">
   <TimePicker />
-</div>
+</div> */}
 
             {/* End of Timepicker component */}
 
