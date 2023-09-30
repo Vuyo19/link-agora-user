@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { X } from "lucide-react";
 import { AiFillStar } from "react-icons/ai";
-import TimePicker from "./Timepicker";
+import MyTimePicker from "./MyTimePicker";
+import DropdownButton from "../Button/DropdownButton";
 
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -144,9 +145,21 @@ export default function EventModal() {
             </div>
             {/* #endregion */}
 
-<div className="mt-5">
-  <TimePicker />
-</div>
+            {/* #region Venue Text-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Venue 
+              </label>
+              <input
+                type="name"
+                aria-label="Enter event venue"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
 
             {/* #region Description Text-field */}
             <div className="sm:col-span-2 mt-[2.7rem]">
