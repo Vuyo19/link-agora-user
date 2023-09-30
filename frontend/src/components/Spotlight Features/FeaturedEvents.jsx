@@ -87,7 +87,7 @@ const MyEvents = () => {
   return (
     <div className="max-w-sm mx-auto">
       <div className="relative">
-      <h3 className="font-bold mb-4 text-lg ">Upcoming Events</h3>
+        <h3 className="font-bold mb-4 text-lg ">Upcoming Events</h3>
         <div
           className="bg-white border-gray-200 border p-4 rounded-lg"
           onMouseEnter={handleMouseEnter}
@@ -100,7 +100,9 @@ const MyEvents = () => {
               className="w-full h-44 object-cover"
             />
           </div>
-          <div className="text-center md:text:sm lg:text-sm mt-4 h-24">{currentImage.description}</div>
+          <div className="text-center md:text:sm lg:text-sm mt-4 h-24">
+            {currentImage.description}
+          </div>
           <hr className="mt-8 h-0.5 border-t-0 bg-gray-300 opacity-100 dark:opacity-50 flex-grow" />
 
           <div className="text-left p-2">
@@ -109,12 +111,11 @@ const MyEvents = () => {
               Details
             </div>
             <div className="md:text:sm lg:text-sm h-20 w-64">
-             <p>{currentImage.date}</p>
-            <p>{currentImage.time}</p>
-            <p>{currentImage.category}</p>
-            <p>{currentImage.website}</p>             
+              <p>{currentImage.date}</p>
+              <p>{currentImage.time}</p>
+              <p>{currentImage.category}</p>
+              <p>{currentImage.website}</p>
             </div>
-
           </div>
           <hr className="mt-8 h-0.5 border-t-0 bg-gray-300 opacity-100 dark:opacity-50 flex-grow" />
 
@@ -124,10 +125,9 @@ const MyEvents = () => {
               Organizer
             </div>
             <div className="md:text:sm lg:text-sm h-8 w-64">
-                         <p>{currentImage.organizerName}</p>
-            <p>{currentImage.organizerEmail}</p> 
+              <p>{currentImage.organizerName}</p>
+              <p>{currentImage.organizerEmail}</p>
             </div>
-
           </div>
         </div>
         <button

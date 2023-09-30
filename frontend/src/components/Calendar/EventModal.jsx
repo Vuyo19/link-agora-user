@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { X } from "lucide-react";
 import { AiFillStar } from "react-icons/ai";
-// import TimePicker from "./Timepicker";
+import TimePicker from "./Timepicker";
 
 const labelsClasses = ["indigo", "gray", "green", "blue", "red", "purple"];
 
@@ -20,6 +20,7 @@ export default function EventModal() {
       : labelsClasses[0]
   );
 
+  // Functions to Control Modal States
   const [showPrimaryModal, setShowPrimaryModal] = useState(true); // State for primary modal
   const [showSecondaryModal, setShowSecondaryModal] = useState(false); // State for secondary modal
   const [showThirdModal, setShowThirdModal] = useState(false); // State for third modal
@@ -45,6 +46,7 @@ export default function EventModal() {
   }
 
   function handleSubmit(e) {
+    // To be removed/altered so imput goes to request, have fun vuyo
     e.preventDefault();
     const calendarEvent = {
       title,
@@ -68,7 +70,6 @@ export default function EventModal() {
     setShowEventModal(false); // Close the current modal
   }
 
-
   return (
     <div className="fixed left-0 top-0 w-full h-[100vh] flex justify-center items-center">
       {/* Overlay */}
@@ -77,9 +78,9 @@ export default function EventModal() {
         onClick={() => setShowEventModal(false)} // Close modal on overlay click
       ></div>
 
-
       {/* First Modal */}
       {showPrimaryModal && (
+        // 1st Modal Form
         <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
           <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
             <div>
@@ -110,7 +111,10 @@ export default function EventModal() {
               {daySelected.format("dddd, MMMM DD")}
             </p>
           </div>
+          {/* Elements of 1st Modal */}
+          {/* Content */}
           <div className="p-5">
+            {/* #region Title Text-field */}
             <div className="flex items-center">
               <label
                 htmlFor="title"
@@ -118,30 +122,34 @@ export default function EventModal() {
               >
                 Title
               </label>
-              <div className="mt-2.5 relative">
+              <div className="px-4">
                 <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  required
-                  placeholder="Enter the event title"
-                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                  onChange={(e) => setTitle(e.target.value)}
+                  type="name"
+                  aria-label="Enter event title"
+                  className="w-[14rem] text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4]"
                 />
               </div>
             </div>
+            {/* #endregion */}
 
-{/* Time picker */}
+            {/* #region Pick Time Object */}
+            <div className="flex items-center mt-6">
+              <label
+                htmlFor="title"
+                className="text-base font-medium text-gray-900 mr-6"
+              >
+                Time
+              </label>
+              <MyTimePicker />
+            </div>
+            {/* #endregion */}
 
-{/* 
 <div className="mt-5">
   <TimePicker />
-</div> */}
+</div>
 
-            {/* End of Timepicker component */}
-
-            <div className="sm:col-span-2 mt-5">
+            {/* #region Description Text-field */}
+            <div className="sm:col-span-2 mt-[2.7rem]">
               <label
                 htmlFor="description"
                 className="text-base font-medium text-gray-900"
@@ -161,8 +169,247 @@ export default function EventModal() {
                 ></textarea>
               </div>
             </div>
+            {/* #endregion */}
+          </div>
+          {/* Footer */}
+          <footer className="flex justify-end border-t p-3 mt-5">
+            <button
+              type="submit"
+              onClick={handleNext1Click}
+              className="bg-[#8A2623] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
+            >
+              Next
+            </button>
+          </footer>
+          {/* #endregion */}
+        </form>
+      )}
 
-            {/* Type of event */}
+      {/* Second Modal */}
+      {showSecondaryModal && (
+        // 2nd Modal Form
+        <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
+          <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
+            <div>
+              {selectedEvent && (
+                <span
+                  onClick={() => {
+                    dispatchCalEvent({
+                      type: "delete",
+                      payload: selectedEvent,
+                    });
+                    setShowEventModal(false);
+                  }}
+                  className="material-icons-outlined text-gray-400 cursor-pointer"
+                >
+                  delete
+                </span>
+              )}
+            </div>
+            <button onClick={() => setShowEventModal(false)}>
+              <X
+                size={28}
+                className="text-gray-600 mx-2 cursor-pointer rounded-md hover:border-[#007f66]"
+              />
+            </button>
+          </header>
+          <div className="flex items-center justify-center">
+            <p className="font-medium text-[#8A2623] text-center text-xl w-72 h-8">
+              {daySelected.format("dddd, MMMM DD")}
+            </p>
+          </div>
+          {/* Elements of 2nd Modal */}
+          {/* Content */}
+          <div className="p-5">
+            {/* #region Address 1 Text-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Address 1
+              </label>
+              <input
+                type="name"
+                aria-label="Enter event address 1"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
+
+            {/* #region Address 2 Text-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Address 2
+              </label>
+              <input
+                type="name"
+                aria-label="Enter event address 2"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
+
+            {/* #region City Text-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                City
+              </label>
+              <input
+                type="name"
+                aria-label="Enter event city"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
+
+            {/* #region Postal Code Number-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Postal Code
+              </label>
+              <input
+                type="number"
+                aria-label="Enter event city"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
+
+            {/* #region Provinces Select Dropdown-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900 mr-2"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Province
+              </label>
+              <div className="ml-6 w-full">
+                <DropdownButton />
+              </div>
+            </div>
+            {/* #endregion */}
+          </div>
+          {/* #endregion */}
+
+          {/* Footer */}
+          <footer className="flex justify-end border-t p-3 mt-5">
+            <button
+              type="button"
+              onClick={handlePrevious1Click} // Previous
+              className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded text-gray-600 w-full ml-12 mt-4 mb-4"
+            >
+              Previous
+            </button>
+            <button
+              type="submit"
+              onClick={handleNext2Click} // Next
+              className="bg-[#8A2623] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
+            >
+              Next
+            </button>
+          </footer>
+          {/* #endregion */}
+        </form>
+      )}
+
+      {/* Third Modal */}
+      {showThirdModal && (
+        // 3rd Modal Form
+        <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
+          <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
+            <div>
+              {selectedEvent && (
+                <span
+                  onClick={() => {
+                    dispatchCalEvent({
+                      type: "delete",
+                      payload: selectedEvent,
+                    });
+                    setShowEventModal(false);
+                  }}
+                  className="material-icons-outlined text-gray-400 cursor-pointer"
+                >
+                  delete
+                </span>
+              )}
+            </div>
+            <button onClick={() => setShowEventModal(false)}>
+              <X
+                size={28}
+                className="text-gray-600 mx-2 cursor-pointer rounded-md hover:border-[#007f66]"
+              />
+            </button>
+          </header>
+          <div className="flex items-center justify-center">
+            <p className="font-medium text-[#8A2623] text-center text-xl w-72 h-8">
+              {daySelected.format("dddd, MMMM DD")}
+            </p>
+          </div>
+          {/* Elements of 3rd Modal */}
+          {/* Content */}
+          <div className="p-5">
+            {/* #region Potential Capacity Text-field */}
+            <div className="flex items-center mt-8">
+              <label
+                className="text-base font-medium text-gray-900"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                Potential capacity
+              </label>
+              <input
+                type="number"
+                aria-label="Enter event city"
+                className="w-full text-sm font-medium h-14 leading-none text-gray-800 p-3 border-[1px] rounded-md border-[#C4C4C4] ml-6"
+              />
+            </div>
+            {/* #endregion */}
+
+            {/* #region Upload invite list file */}
+            <div class="col-span-2 items-center justify-center w-full mt-5">
+              <label
+                htmlFor="description"
+                className="text-base font-medium text-gray-900"
+              >
+                Invite List
+              </label>
+
+              <label
+                for="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-52 mt-2 mb-[3rem] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+              >
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg
+                    class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 16"
+                  ></svg>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-semibold">Click to upload</span> or drag
+                    and drop
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  </p>
+                </div>
+                <input id="dropzone-file" type="file" class="hidden" />
+              </label>
+            </div>
+
+            {/* #endregion */}
+
+            {/* #region Select type of event */}
             <div className="flex items-center mt-5">
               <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-400 rounded-lg sm:flex">
                 <li className="w-full border-b border-gray-400 sm:border-b-0 sm:border-r">
@@ -220,210 +467,10 @@ export default function EventModal() {
                 </li>
               </ul>
             </div>
-            {/* End of Type of event */}
-          </div>
-          <footer className="flex justify-end border-t p-3 mt-5">
-            <button
-              type="submit"
-              onClick={handleNext1Click}
-              className="bg-[#8A2623] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
-            >
-              Next
-            </button>
-          </footer>
-        </form>
+            {/* #endregion */}
 
-      )}
-
-            {/* Second Modal */}
-            {showSecondaryModal && (
-        <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
-          <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
-            <div>
-              {selectedEvent && (
-                <span
-                  onClick={() => {
-                    dispatchCalEvent({
-                      type: "delete",
-                      payload: selectedEvent,
-                    });
-                    setShowEventModal(false);
-                  }}
-                  className="material-icons-outlined text-gray-400 cursor-pointer"
-                >
-                  delete
-                </span>
-              )}
-            </div>
-            <button onClick={() => setShowEventModal(false)}>
-              <X
-                size={28}
-                className="text-gray-600 mx-2 cursor-pointer rounded-md hover:border-[#007f66]"
-              />
-            </button>
-          </header>
-          <div className="flex items-center justify-center">
-            <p className="font-medium text-[#007f66] text-center text-xl w-72 h-8">
-              {daySelected.format("dddd, MMMM DD")}
-            </p>
-          </div>
-          <div className="p-5">
-            <div className="flex items-center">
-              <label
-                htmlFor="title"
-                className="text-base font-medium text-gray-900 mr-4"
-              >
-                Venue
-              </label>
-              <div className="mt-2.5 relative">
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  required
-                  placeholder="Enter the event title"
-                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center">
-              <label
-                htmlFor="title"
-                className="text-base font-medium text-gray-900 mr-4"
-              >
-                Potential Capacity
-              </label>
-              <div className="mt-2.5 relative">
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  required
-                  placeholder="Enter the event title"
-                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="flex items-center">
-              <label
-                htmlFor="title"
-                className="text-base font-medium text-gray-900 mr-4"
-              >
-                Address 1
-              </label>
-              <div className="mt-2.5 relative">
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  required
-                  placeholder="Enter the event title"
-                  className="block w-full  text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-400 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </div>
-            </div>
-
-          </div>
-          <footer className="flex justify-end border-t p-3 mt-5">
-            <button
-              type="button"
-              onClick={handlePrevious1Click} // Previous 
-              className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded text-gray-600 w-full ml-12 mt-4 mb-4"
-            >
-              Previous
-            </button>
-            <button
-              type="submit"
-              onClick={handleNext2Click} // Next 
-              className="bg-[#01663E] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
-            >
-              Next
-            </button>
-          </footer>
-        </form>
-      )}
-
-      {/* Third Modal */}
-      {showThirdModal && (
-        <form className="bg-white rounded-lg shadow-2xl w-2/5 z-20">
-          <header className="bg-[gray-100] rounded-md px-4 py-2 flex justify-between items-center">
-            <div>
-              {selectedEvent && (
-                <span
-                  onClick={() => {
-                    dispatchCalEvent({
-                      type: "delete",
-                      payload: selectedEvent,
-                    });
-                    setShowEventModal(false);
-                  }}
-                  className="material-icons-outlined text-gray-400 cursor-pointer"
-                >
-                  delete
-                </span>
-              )}
-            </div>
-            <button onClick={() => setShowEventModal(false)}>
-              <X
-                size={28}
-                className="text-gray-600 mx-2 cursor-pointer rounded-md hover:border-[#007f66]"
-              />
-            </button>
-          </header>
-          <div className="flex items-center justify-center">
-            <p className="font-medium text-[#007f66] text-center text-xl w-72 h-8">
-              {daySelected.format("dddd, MMMM DD")}
-            </p>
-          </div>
-          <div className="p-5">
-            {/* End of Timepicker component */}
-
-            {/* choose file */}
-
-            <div class="flex items-center justify-center w-full mt-5">
-              <label
-                for="dropzone-file"
-                class="flex flex-col items-center justify-center w-full h-72 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
-              >
-                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg
-                    class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                    />
-                  </svg>
-                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span class="font-semibold">Click to upload</span> or drag
-                    and drop
-                  </p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">
-                    SVG, PNG, JPG or GIF (MAX. 800x400px)
-                  </p>
-                </div>
-                <input id="dropzone-file" type="file" class="hidden" />
-              </label>
-            </div>
-
-            {/* end of */}
-
-            {/* Event label */}
-            <div className="flex items-center mt-5 border border-gray-200 rounded-lg p-3">
+            {/* Event label - Not to be used*/}
+            {/* <div className="flex items-center mt-5 border border-gray-200 rounded-lg p-3">
               <p className="text-sm font-medium text-gray-500 mr-20">
                 Select event label colour
               </p>
@@ -443,25 +490,29 @@ export default function EventModal() {
                   </span>
                 ))}
               </div>
-            </div>
-            {/* End of Event label */}
+            </div> */}
+            {/* #endregion */}
           </div>
+          {/* #endregion */}
+
+          {/* Footer */}
           <footer className="flex justify-end border-t p-3 mt-5">
             <button
               type="button"
-              onClick={handlePrevious2Click} // Previous 
+              onClick={handlePrevious2Click} // Previous Button function
               className="bg-gray-300 hover:bg-gray-400 px-6 py-2 rounded text-gray-600 w-full ml-12 mt-4 mb-4"
             >
               Previous
             </button>
             <button
               type="submit"
-              onClick={handleSubmit} // Submit 
+              onClick={handleSubmit} // Submit Request Button function -- to be altered
               className="bg-[#01663E] hover:bg-black px-6 py-2 rounded text-white w-full ml-12 mr-12 mt-4 mb-4"
             >
               Request
             </button>
           </footer>
+          {/* #endregion */}
         </form>
       )}
     </div>
