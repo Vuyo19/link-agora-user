@@ -1,9 +1,9 @@
 import React from "react";
-import useWindowSize from "../../components/useWindowSize";
+import useWindowSize from "../../../components/useWindowSize";
 
 // Importing Component(s)
-import DashboardButton from "../../components/Button/DashboardButton";
-import MyEvents from "../../components/Spotlight Features/FeaturedEvents";
+import DashboardButton from "../../../components/Button/DashboardButton";
+import FeaturedEvents from "../../../components/Card/Carousel/FeaturedEvents";
 
 // Importing React-Icons
 import { TbCalendarStar } from "react-icons/tb";
@@ -56,7 +56,7 @@ const Dashboard = () => {
         {/* Second Row of buttons */}
         <div className="button-group-2">
           {/* Dashboard Button 3 - Event Invitations */}
-          <Link to="/upcomingevents">
+          <Link to="/viewmyinvitations">
             <DashboardButton
               title="Event Invitations"
               icon={<HiOutlineMailOpen color="#016138" />}
@@ -88,7 +88,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="newsfeed">
-        {windowSize.width && windowSize.width > 780 ? <MyEvents /> : null}
+        {windowSize.width && windowSize.width > 780 ? <FeaturedEvents /> : null}
       </div>
     </div>
   );

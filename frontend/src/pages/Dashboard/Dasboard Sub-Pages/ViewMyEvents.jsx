@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBar from "../../components/Search Bar/SearchBar";
-import MyEvents from "../../components/Spotlight Features/MyEvents";
-import { Stats } from "../../components/Statistics/Stats";
+import SearchBar from "../../../components/Search Bar/SearchBar";
+import MyEvents from "../../../components/Table/Events/MyEvents";
+import { Stats } from "../../../components/Card/Statistics/Stats";
 
 const ViewMyEvents = () => {
   return (
@@ -26,14 +26,15 @@ const ViewMyEvents = () => {
         </div>
 
         {/* Table Section */}
-        <div className="w-full h-[300px]  px-5 mx-auto lg:container mt-10"> {/* Add margin-top to separate the sections */}
-          <SearchBar />
+        <div className="w-full h-[300px]  px-5 mx-auto lg:container mt-10">
+          {" "}
           <MyEvents
             row1="Title"
             row2="Date"
             row3="Time"
+            rowx="Venue"
             row4="Status"
-            row5="Amount"
+            row5=""
           />
         </div>
       </div>
