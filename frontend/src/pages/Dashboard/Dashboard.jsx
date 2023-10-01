@@ -28,50 +28,55 @@ const Dashboard = () => {
         {/* First Row of buttons */}
         <div className="button-group">
           {/* Dashboard Button 1 - Upcoming Events */}
-          <DashboardButton
-            title="Upcoming Events"
-            icon={<TbCalendarStar color="#016138" />}
-            subtitle="12 upcoming events"
-            info={
-              <Link to="/upcomingevents">
-                Click to view all your upcoming events
-              </Link>
-            }
-          />
+          <Link to="/upcomingevents">
+            <DashboardButton
+              title="Upcoming Events"
+              icon={<TbCalendarStar color="#016138" />}
+              subtitle="12 upcoming events"
+              info="Click to view all your upcoming events"
+            />
+          </Link>
+
           {/* #endregion */}
 
           {/* Dashboard Button 2 - Completed Events */}
-          <DashboardButton
-            title="Completed Events"
-            icon={<LuCalendarCheck2 color="#016138" />}
-            iconBackgroundColor="#edf6ff"
-            subtitle="8 complted events"
-            info="Click to view all your completed events"
-            className="w-80"
-          />
+          <Link to="/upcomingevents">
+            <DashboardButton
+              title="Completed Events"
+              icon={<LuCalendarCheck2 color="#016138" />}
+              iconBackgroundColor="#edf6ff"
+              subtitle="8 complted events"
+              info="Click to view all your completed events"
+              className="w-80"
+            />
+          </Link>
           {/* #endregion */}
         </div>
 
         {/* Second Row of buttons */}
         <div className="button-group-2">
           {/* Dashboard Button 3 - Event Invitations */}
-          <DashboardButton
-            title="Event Invitations"
-            icon={<HiOutlineMailOpen color="#016138" />}
-            iconBackgroundColor="#f6f2ff"
-            subtitle="4 flagged events"
-            info="Click to view all your upcoming events"
-          />
+          <Link to="/upcomingevents">
+            <DashboardButton
+              title="Event Invitations"
+              icon={<HiOutlineMailOpen color="#016138" />}
+              iconBackgroundColor="#f6f2ff"
+              subtitle="4 flagged events"
+              info="Click to view all your upcoming events"
+            />
+          </Link>
           {/* #endregion */}
 
           {/* Dashboard Button 4 - My Event */}
-          <DashboardButton
-            title="My Events"
-            icon={<FaPeopleGroup color="#016138" />}
-            iconBackgroundColor="#fdf0f6"
-            subtitle="currently empty"
-            info="Click to view all your completed events"
-          />
+          <Link to="/viewmyevents">
+            <DashboardButton
+              title="My Events"
+              icon={<FaPeopleGroup color="#016138" />}
+              iconBackgroundColor="#fdf0f6"
+              subtitle="currently empty"
+              info="Click to view all your upcoming events"
+            />
+          </Link>
           {/* #endregion */}
         </div>
 

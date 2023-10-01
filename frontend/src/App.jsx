@@ -12,12 +12,13 @@ import NavSideBar from "./components/Exterior/Sidebar/NavSidebar";
 import NavBar from "./components/Exterior/Navbar/NavBar";
 import "./App.css";
 import LoginLayout from "./pages/LoginLayout";
+import ViewMyEvents from "./pages/Sub-Pages/ViewMyEvents";
 
 const App = () => {
   const location = useLocation();
 
   // Define routes that should show the navbar and sidebar
-  const showNavRoutes = ["/", "/schedule", "/settings", "/profile", "/needhelp", "/upcomingevents", "/noti"];
+  const showNavRoutes = ["/", "/schedule", "/settings", "/profile", "/needhelp", "/upcomingevents", "/noti","/viewmyevents"];
 
   // Check if the current route should show the navbar and sidebar
   const shouldShowNav = showNavRoutes.includes(location.pathname);
@@ -35,7 +36,10 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/needhelp" element={<NeedHelp />} />
             <Route path="/upcomingevents" element={<UpcomingEvents />} />
+            {/* Sub-Pages */}
             <Route path="/noti" element={<Noti />} />
+            <Route path="/viewmyevents" element={<ViewMyEvents />} />
+
             {/* Use the layout for the login page */}
             <Route
               path="/login"

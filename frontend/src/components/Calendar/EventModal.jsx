@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { X } from "lucide-react";
-import { Upload } from 'lucide-react';
+import { Upload } from "lucide-react";
 import { AiFillStar } from "react-icons/ai";
 import MyTimePicker from "./MyTimePicker";
 import DropdownButton from "../Button/DropdownButton";
@@ -152,7 +152,7 @@ export default function EventModal() {
                 className="text-base font-medium text-gray-900"
                 style={{ whiteSpace: "nowrap" }}
               >
-                Venue 
+                Venue
               </label>
               <input
                 type="name"
@@ -402,7 +402,7 @@ export default function EventModal() {
                 class="flex flex-col items-center justify-center w-full h-52 mt-2 mb-[3rem] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
               >
                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                < Upload size={24} color="#6B7280"/>
+                  <Upload size={24} color="#6B7280" />
                   <p class="mb-2 mt-4 text-sm text-gray-500">
                     <span class="font-semibold">Click to upload</span> or drag
                     and drop
