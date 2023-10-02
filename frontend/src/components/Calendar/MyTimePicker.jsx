@@ -4,6 +4,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { renderTimeViewClock } from '@mui/x-date-pickers/timeViewRenderers';
+import './custom-styles.css'; // Import your custom CSS file
 
 export default function MyTimePicker() {
   return (
@@ -16,6 +17,7 @@ export default function MyTimePicker() {
             minutes: renderTimeViewClock,
             seconds: renderTimeViewClock,
           }}
+          className="my-timepicker-class" // Add the class that corresponds to the TimePicker
         />
       </DemoContainer>
     </LocalizationProvider>
