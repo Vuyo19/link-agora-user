@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import GlobalContext from "../../context/GlobalContext";
-import { CalendarPlus } from 'lucide-react';
+import { BiSolidCalendarPlus } from "react-icons/bi";
+
 
 
 
@@ -9,10 +10,10 @@ export default function CreateEventButton() {
   return (
     <button
       onClick={() => setShowEventModal(true)}
-      className="border p-2 rounded-lg flex items-center bg-[#01663E]"
+      className="border p-2 rounded-lg flex w-[10.5rem] h-12 items-center bg-[#01663E] hover:bg-[#8A2623]"
     >
-      <CalendarPlus alt="create_event" className="w-5 h-5" color="#FFFFFF" />
-      <span className="pl-3 pr-7 text-white"> Create Event</span>
+      <BiSolidCalendarPlus alt="create_event" className="w-6 h-6" color="#FFFFFF" />
+      <span className="pl-3 text-white"> Make Request</span>
     </button>
   );
 }

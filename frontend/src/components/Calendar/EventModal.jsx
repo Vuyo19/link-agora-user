@@ -177,7 +177,7 @@ export default function EventModal() {
                   value={description}
                   placeholder=""
                   required
-                  className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-teal-600 rounded-md resize-y focus:outline-none focus:border-blue-600 caret-blue-600"
+                  className="block w-full px-4 py-4 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-teal-600 rounded-md resize-y focus:outline-none focus:border-blue-600 caret-blue-600"
                   rows="4"
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
