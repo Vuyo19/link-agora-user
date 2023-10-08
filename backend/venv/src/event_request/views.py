@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json 
 from datetime import datetime
-from .models import Event, CustomUser, EventTrack, Status
+from .models import Event, EventTrack, Status
+from users.models import CustomUser
  
 # Create your views here.  
 
@@ -17,7 +18,8 @@ def upload_event_request(request):
             # Retrieving the set of data. 
             data = json.loads(request.body) 
 
-            u_title = data.get('event_title')
+            u_title = data.get('event_title') 
+
             u_time = data.get('event_time')
             u_date = data.get('event_date')
             u_venue = data.get('event_venue')
@@ -28,9 +30,10 @@ def upload_event_request(request):
             u_postal_code = data.get('event_postalCode')
             u_province = data.get('event_province')
             u_potential_capacity = int(data.get('event_potentialCapacity'))
-            u_type = data.get('event_type')    
+            u_type = data.get('event_type')   
 
-            # Saving the requested event into the database. 
+            # Saving the requested event into the database.  
+ 
             new_event = Event(
                 event_id_comm="Testing",
                 title=u_title, 
@@ -50,9 +53,10 @@ def upload_event_request(request):
                 status_id=Status.objects.get(id=4)
             )     
 
-            new_event.save()  
+            new_event.save()   
 
-            print('Upload Successful')
+            print('Upload Successful') 
+
             return JsonResponse({'message': 'success'}) 
         except Exception as e: 
             return JsonResponse({'message': 'Failed to record event'})

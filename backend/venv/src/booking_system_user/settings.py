@@ -23,7 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-iev7sek)h9(#&bc+b910i^(4tt@0(2c&#qavfyq2=30hph7i$w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True 
+
+CLOUD = False
 
 ALLOWED_HOSTS = ["*"]  
 
@@ -102,7 +104,7 @@ DATABASES = {
         'HOST': 'link-agora-db.cukbjiamverv.eu-west-2.rds.amazonaws.com',
         'PORT': '5432',  # Default PostgreSQL port
     }
-}
+}  
 
 
 # Password validation
@@ -125,7 +127,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
+# https://docs.djangoproject.com/en/4.2/topics/i18n/ 
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 
