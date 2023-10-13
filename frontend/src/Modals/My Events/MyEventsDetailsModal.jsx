@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+// Importing Icons
 import { CalendarDays } from "lucide-react";
 import { CircleDashed } from "lucide-react";
 import { MapPin } from "lucide-react";
@@ -6,6 +8,13 @@ import { Users } from "lucide-react";
 import { Binary } from "lucide-react";
 import { UserSquare } from "lucide-react";
 import { X } from "lucide-react";
+import { IoMail } from 'react-icons/io5';
+import { SiMinutemailer } from 'react-icons/si';
+import { ScrollText } from "lucide-react";
+
+
+
+
 
 import poster from "../../assets/event1poster.jpg";
 
@@ -19,6 +28,7 @@ const MyEventsDetailsModal = ({
   code,
 }) => {
   const [isImageModalOpen, setImageModalOpen] = useState(false);
+  const [isUpdateModalOpen, setUpdateModalOpen] = useState(false); // State for the update modal
 
   const openImageModal = () => {
     setImageModalOpen(true);
@@ -27,6 +37,25 @@ const MyEventsDetailsModal = ({
   const closeImageModal = () => {
     setImageModalOpen(false);
   };
+
+  const openUpdateModal = () => {
+    setUpdateModalOpen(true);
+  };
+
+  const closeUpdateModal = () => {
+    setUpdateModalOpen(false);
+  };
+
+    // Function to handle saving the updated fields
+    const handleSave = () => {
+      // Perform the save operation here (e.g., update data in a database)
+      // You can access the updated values in creatorField, timelineField, venueField, etc.
+      // Then, close the update modal
+      closeUpdateModal();
+    };
+
+
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -155,13 +184,24 @@ const MyEventsDetailsModal = ({
 
         {/* Option Buttons */}
         <div className="flex flex-col justify-center space-y-4">
-          <button className="px-6 py-2 text-[#03663F] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#03663F] hover:text-white">
-            Update Details
-          </button>
-          <button className="px-6 py-2 text-[#8A2623] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#8A2623] hover:text-white">
-            Delete
-          </button>
-        </div>
+        <button
+        className="flex items-center justify-center px-6 py-2 text-[#03663F] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#03663F] hover:text-white"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        Send Invitation
+        {isHovered ? (
+          <SiMinutemailer size={24} className="ml-2" />
+        ) : (
+          <IoMail size={23} className="ml-2" />
+        )}
+      </button>
+  <button className="flex items-center justify-center px-6 py-2 text-[#03663F] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#03663F] hover:text-white"
+  onClick={openUpdateModal}>
+    Request Update
+  </button>
+</div>
+
         {/* //---- endof ----// */}
       </div>
 
@@ -183,6 +223,81 @@ const MyEventsDetailsModal = ({
               <X size={18} />
             </button>
 
+          </div>
+        </div>
+      )}
+
+            {/* Update Details Modal */}
+            {isUpdateModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black opacity-40"></div>
+          <div className="relative  w-[500px] bg-white rounded-lg p-4">
+            <div className="flex items-center justify-center mb-4">
+              <button
+                className="px-6 py-2 text-[#8A2623] font-bold hover:underline"
+                onClick={closeUpdateModal} // Cancel the update
+              >
+                Cancel
+              </button>
+            </div>
+            <div className="flex items-center justify-center">
+              <h3 className="font-bold text-lg sm:text-xl text-gray-800 mb-6">
+                {/* Heading */}
+                Request update of event details
+              </h3>
+            </div>
+
+            <div class="flex items-center mb-4">
+              <label
+                for="website-admin"
+                class="text-sm font-medium text-gray-900 mr-2"
+              >
+                Subject
+              </label>
+              <div class="flex w-full">
+                <span class="inline-flex items-center px-3 text-sm text-gray-900 border border-r-0 border-gray-300 rounded-l-md">
+                  <ScrollText size={20} color="gray" />
+                </span>
+                <input
+                  type="text"
+                  id="website-admin"
+                  class="rounded-none rounded-r-lg border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full h-[3.7rem] text-sm p-2.5"
+                  placeholder="Enter request subject"
+                />
+              </div>
+            </div>
+
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="description"
+                className="text-sm font-medium text-gray-900"
+              >
+                Description
+              </label>
+              <div className="mt-2.5 relative">
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder=""
+                  required
+                  className="block w-full px-4 py-4 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-300 rounded-md resize-y focus:outline-none focus:border-blue-600 caret-blue-600"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center">
+              <div className="flex justify-between w-full">
+                <div className="flex flex-col w-full">
+                  <button
+                    className="px-6 py-2 w-full text-white font-bold bg-[#03663F] rounded-full mt-4 mb-4 hover:bg-black"
+                    onClick={handleSave} // Save the changes button
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

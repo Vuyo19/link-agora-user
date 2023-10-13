@@ -10,6 +10,8 @@ import { TbCalendarStar } from "react-icons/tb";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { LuCalendarCheck2 } from "react-icons/lu";
 import { HiOutlineMailOpen } from "react-icons/hi";
+import { FiActivity } from "react-icons/fi";
+
 
 // Importing CSS Style
 import "./Dashboard.css";
@@ -40,12 +42,12 @@ const Dashboard = () => {
           {/* #endregion */}
 
           {/* Dashboard Button 2 - Completed Events */}
-          <Link to="/upcomingevents">
+          <Link to="/activitylog">
             <DashboardButton
-              title="Completed Events"
-              icon={<LuCalendarCheck2 color="#016138" />}
+              title="Activity Log"
+              icon={<FiActivity color="#016138" />}
               iconBackgroundColor="#edf6ff"
-              subtitle="8 complted events"
+              subtitle="8 new updates"
               info="Click to view all your completed events"
               className="w-80"
             />

@@ -1,8 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
+
 import BarLoader from "react-spinners/BarLoader";
+
+import TitleDecoration from "../../../components/Card/Carousel/TitleDecoration";
+import overlayImage1 from '../../../assets/decoOverlay.png';
+import backgroundImages1 from '../../../assets/invitation-img-1.jpeg';
+import backgroundImages2 from '../../../assets/invitation-img-2.jpeg';
+import backgroundImages3 from '../../../assets/invitation-img-3.jpeg';
 import MyEvents from "../../../components/Table/Events/MyEvents";
-import { Stats } from "../../../components/Card/Statistics/Stats";
 
 const ViewMyEvents = () => {
   const [loading, setLoading] = useState(false);
@@ -14,50 +20,26 @@ const ViewMyEvents = () => {
   }, []);
   return (
     <div className="flex items-center justify-center h-full bg-[#fafbfd]">
-      {loading ? (
+            {loading ? (
         <BarLoader color={"#01663E"} loading={loading} size={150} />
       ) : (
-        /* Flex Container for Horizontal Alignment */
-        <div className="flex flex-col w-full">
-          {/* Top Section */}
-          <div className="w-full bg-[#fafbfd] px-5 z-10">
-            <div className="w-full px-5 mx-auto lg:container -mt-28">
-              <div className="flex justify-center items-center">
-                <h1 className="text-5xl font-semibold text-gray-800">
-                  My Events
-                </h1>
-              </div>
-              <div className="flex justify-center items-center">
-                <p className="text-md font-medium tracking-widest text-gray-800 lg:text-sm mt-4">
-                  Take control of your events! Manage them right here.
-                </p>
-              </div>
-              <Stats
-                stat1="Events"
-                value1="6"
-                stat2="Approved"
-                value2="4"
-                stat3="Pending"
-                value3="2"
-                stat4="Declined"
-                value4="0"
-              />
-            </div>
-          </div>
-
-          {/* Table Section */}
-          <div className="w-full h-[300px] px-5 mx-auto lg:container mt-10">
-            <MyEvents
-              row1="Title"
-              row2="Date"
-              row3="Time"
-              rowx="Venue"
-              row4="Status"
-              row5=""
-            />
+      <div className="flex flex-col w-full">
+        <div className="w-full bg-[#fafbfd] mb-6 z-10">
+          {/* Page Content */}
+          <div className="w-full px-20 mx-auto lg:container -mt-24"> {/* Adjust margin-top here */}
+          <TitleDecoration
+          title="Events"
+          subtitle="Take control of your events! Manage them right here"
+          overlayImage={overlayImage1}
+          backgroundImages={[backgroundImages1, backgroundImages2, backgroundImages3]}/>
           </div>
         </div>
-      )}
+        <div className="w-full h-[300px] px-20 mx-auto lg:container mt-10">
+          {" "}
+          <MyEvents/>
+        </div>
+      </div>
+            )}
     </div>
   );
 };

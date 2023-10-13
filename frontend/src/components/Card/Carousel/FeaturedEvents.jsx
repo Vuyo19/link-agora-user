@@ -136,7 +136,7 @@ const FeaturedEvents = () => {
         >
           <ChevronLeft
             size={32}
-            className="text-gray-600 bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
+            className="text-gray-600 hover:text-white bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
           />
         </button>
         <button
@@ -145,7 +145,7 @@ const FeaturedEvents = () => {
         >
           <ChevronRight
             size={32}
-            className="text-gray-600 bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
+            className="text-gray-600 hover:text-white bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
           />
         </button>
       </div>

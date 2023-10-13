@@ -1,6 +1,4 @@
 /* custom-styles.css */
-.my-timepicker-class .MuiOutlinedInput-notchedOutline {
-    border-color: rgb(13 148 136) !important; /* Change the border color */
-    border-width: 1px !important; /* Increase the border thickness to 2px */
-  }
-  
+.my-timepicker-class {
+  width: 300px; /* Adjust the width as needed */
+}

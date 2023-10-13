@@ -13,6 +13,8 @@ import "./App.css";
 import LoginLayout from "./pages/LoginLayout";
 import ViewMyEvents from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyEvents";
 import ViewMyInvitations from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyInvitations";
+import ActivityLog from "./pages/Dashboard/Dasboard Sub-Pages/ActivityLog";
+
 
 const App = () => {
   const location = useLocation();
@@ -28,13 +30,14 @@ const App = () => {
     "/noti",
     "/viewmyevents",
     "/viewmyinvitations",
+    "/activitylog",
   ];
 
   // Check if the current route should show the navbar and sidebar
   const shouldShowNav = showNavRoutes.includes(location.pathname);
 
   return (
-    <div className="flex bg-[#fafbfd] w-screen">
+    <div className="flex bg-[#fafbfd] w-full">
       {shouldShowNav && <NavSideBar />}
       <div className="flex flex-col flex-grow">
         {shouldShowNav && <NavBar />}
@@ -49,6 +52,9 @@ const App = () => {
             {/* Sub-Pages */}
             <Route path="/viewmyevents" element={<ViewMyEvents />} />
             <Route path="/viewmyinvitations" element={<ViewMyInvitations />} />
+            <Route path="/activitylog" element={<ActivityLog />} />
+            
+
 
             {/* Use the layout for the login page */}
             <Route

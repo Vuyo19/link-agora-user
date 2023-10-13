@@ -10,15 +10,17 @@ export default function MyTimePicker() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['TimePicker']}>
-        <TimePicker
-          label="Pick Time"
-          viewRenderers={{
-            hours: renderTimeViewClock,
-            minutes: renderTimeViewClock,
-            seconds: renderTimeViewClock,
-          }}
-          className="my-timepicker-class" // Add the class that corresponds to the TimePicker
-        />
+        <div className="my-timepicker-container">
+          <TimePicker
+            label="Pick Time"
+            viewRenderers={{
+              hours: renderTimeViewClock,
+              minutes: renderTimeViewClock,
+              seconds: renderTimeViewClock,
+            }}
+            className="my-timepicker-class" // Add the class that corresponds to the TimePicker
+          />
+        </div>
       </DemoContainer>
     </LocalizationProvider>
   );
