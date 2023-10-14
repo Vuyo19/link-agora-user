@@ -14,7 +14,7 @@ import LoginLayout from "./pages/LoginLayout";
 import ViewMyEvents from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyEvents";
 import ViewMyInvitations from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyInvitations";
 import ActivityLog from "./pages/Dashboard/Dasboard Sub-Pages/ActivityLog";
-
+import Testing from "./pages/Testing/Testing";
 
 const App = () => {
   const location = useLocation();
@@ -53,8 +53,6 @@ const App = () => {
             <Route path="/viewmyevents" element={<ViewMyEvents />} />
             <Route path="/viewmyinvitations" element={<ViewMyInvitations />} />
             <Route path="/activitylog" element={<ActivityLog />} />
-            
-
 
             {/* Use the layout for the login page */}
             <Route
@@ -62,6 +60,15 @@ const App = () => {
               element={
                 <LoginLayout>
                   <Login />
+                </LoginLayout>
+              }
+            />
+            {/* 502 Error Page */}
+            <Route
+              path="/testing"
+              element={
+                <LoginLayout>
+                  <Testing />
                 </LoginLayout>
               }
             />
