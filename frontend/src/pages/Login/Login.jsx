@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import LoginLayout from '../LoginLayout';
 import logo from "../../assets/link-agora-logo-variation-4.png";
+import authenticateUserProcess from './LoginProcess';
 
-const Login = () => {
+const Login = () => {  
+
+
+  // When the user wants to login. 
+  function authenticateUserButton() { 
+
+    const user_email = document.querySelector('input[name="email"]').value;
+    const user_password = document.querySelector('input[name="password"]').value; 
+
+    authenticateUserProcess(user_email, user_password); 
+    
+  } 
+
+ 
   return (
     <LoginLayout>
       <div>
@@ -17,7 +31,7 @@ const Login = () => {
                 <h1 className="flex items-center justify-center text-md font-bold leading-tight tracking-tight text-white md:text-lg">
                   Sign in to your account
                 </h1>
-                <form className="space-y-4 md:space-y-6" action="#">
+                <form onSubmit={authenticateUserButton} className="space-y-4 md:space-y-6" action="#">
                   <div className='mt-8'>
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                     <input

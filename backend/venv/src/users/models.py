@@ -57,6 +57,11 @@ class CustomUser(AbstractUser):
         ('SKILLS', 'Skill Development'),
         ('PASSION', 'Pursuing Passion'),
         ('OTHER', 'Other'),
+    ) 
+
+    ROLE_CHOICES = (
+        ('ADMIN', 'Admin'),
+        ('USER', 'User'),
     )
 
     email = models.EmailField(unique=True)
@@ -75,6 +80,7 @@ class CustomUser(AbstractUser):
     upload = models.FileField(upload_to='user_uploads/')
     reasons_for_joining = models.ManyToManyField('Reason', choices=REASONS_CHOICES)
     job_title = models.CharField(max_length=100)
+    role = models.CharField(max_length=5, choices=ROLE_CHOICES, null=True)  # Role field added here
     
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
