@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LoginLayout from '../LoginLayout';
 import logo from "../../assets/link-agora-logo-variation-4.png";
 
-const Login = () => {
+const Signup = () => {
   return (
     <LoginLayout>
       <div>
@@ -15,7 +15,7 @@ const Login = () => {
             <div className="w-full rounded-lg md:mt-0 sm:max-w-md xl:p-0">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="flex items-center justify-center text-md font-bold leading-tight tracking-tight text-white md:text-lg">
-                  Sign in to your account
+                  Sign up for a new account
                 </h1>
                 <form className="space-y-4 md:space-y-6" action="#">
                   <div className='mt-8'>
@@ -40,31 +40,41 @@ const Login = () => {
                       required
                     />
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div>
+                    <label htmlFor="confirmpassword" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                    <input
+                      type="password"
+                      name="confirmpassword"
+                      id="confirmpassword"
+                      placeholder="••••••••"
+                      className="bg-black border-2 border-[#2A805D] text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      required
+                    />
+                  </div>
+                  <div className="flex items-center">
                     <div className="flex items-start">
                       <div className="flex items-center h-5">
                         <input
-                          id="remember"
-                          aria-describedby="remember"
+                          id="agreeToTerms"
+                          aria-describedby="agreeToTerms"
                           type="checkbox"
                           className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
                         />
                       </div>
                       <div className="ml-3 text-sm">
-                        <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
+                        <label htmlFor="agreeToTerms" className="text-gray-500 dark:text-gray-300">I agree to the <Link to="/terms" className="text-primary-600 hover:underline">Terms of Service</Link></label>
                       </div>
                     </div>
-                    <a href="#" className="text-sm font-medium text-white hover:underline">Forgot password?</a>
                   </div>
                   {/* Embed the Link within the button */}
                   <button
                     type="submit"
                     className="w-full text-white bg-[#8A2623] hover:bg-[#01663E]  focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
-                    <Link to="/schedule">Sign in</Link>
+                    Sign up
                   </button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Don’t have an account yet? <a href="/signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                    Already have an account? <Link to="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Log in</Link>
                   </p>
                 </form>
               </div>
@@ -76,4 +86,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

@@ -15,6 +15,8 @@ import ViewMyEvents from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyEvents";
 import ViewMyInvitations from "./pages/Dashboard/Dasboard Sub-Pages/ViewMyInvitations";
 import ActivityLog from "./pages/Dashboard/Dasboard Sub-Pages/ActivityLog";
 import Testing from "./pages/Testing/Testing";
+import Error from "./pages/Error/Error";
+import Signup from "./pages/Signup/Signup";
 
 const App = () => {
   const location = useLocation();
@@ -63,12 +65,23 @@ const App = () => {
                 </LoginLayout>
               }
             />
-            {/* 502 Error Page */}
+
+            {/* Use the layout for the signup page */}
             <Route
-              path="/testing"
+              path="/signup"
               element={
                 <LoginLayout>
-                  <Testing />
+                  <Signup />
+                </LoginLayout>
+              }
+            />
+
+            {/* 502 Error Page */}
+            <Route
+              path="/*"
+              element={
+                <LoginLayout>
+                  <Error />
                 </LoginLayout>
               }
             />
