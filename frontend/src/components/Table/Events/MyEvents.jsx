@@ -16,7 +16,7 @@ function MyEvents() {
           {/* Heading */}
 
           <div className="flex items-center gap-x-3 -mt-8 mb-6">
-            <h1 className="text-3xl font-medium text-black">My Events</h1>
+            <h1 className="text-3xl font-medium text-black">Events</h1>
           </div>
         </div>
 
@@ -113,10 +113,10 @@ function MyEvents() {
                       eventId="6783"
                       organiser="Jasmine Ming"
                       eventStatus="Pending"
-                      statusColor="#FFFCC"
+                      statusColor="#FFF6C2"
                       eventDate="03-08-2023"
                       eventVenue="Think Tank 1"
-                      textColor="#EAB308"
+                      textColor="#E0BF00"
                     />
                     {/* Other rows */}
                   </tbody>

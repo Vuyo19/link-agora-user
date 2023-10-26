@@ -114,10 +114,10 @@ function MyInvitations() {
                       eventId="6783"
                       organiser="Jasmine Ming"
                       eventStatus="Pending"
-                      statusColor="#ffffcc"
+                      statusColor="#FFF6C2"
                       eventDate="03-08-2023"
                       eventVenue="Think Tank 1"
-                      textColor="#EAB308"
+                      textColor="#E0BF00"
                     />
                     {/* Other rows */}
                   </tbody>

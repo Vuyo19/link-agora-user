@@ -293,7 +293,7 @@ const MyEventsDetailsModal = ({
                     className="px-6 py-2 w-full text-white font-bold bg-[#03663F] rounded-full mt-4 mb-4 hover:bg-black"
                     onClick={handleSave} // Save the changes button
                   >
-                    Save
+                    Send
                   </button>
                 </div>
               </div>

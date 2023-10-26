@@ -87,7 +87,7 @@ const FeaturedEvents = () => {
   return (
     <div className="max-w-sm mx-auto">
       <div className="relative">
-        <h3 className="font-bold mb-4 text-lg ">Upcoming Events</h3>
+        <h3 className="font-bold mb-4 text-lg ">Featured Events</h3>
         <div
           className="bg-white border-gray-200 border p-4 rounded-lg"
           onMouseEnter={handleMouseEnter}

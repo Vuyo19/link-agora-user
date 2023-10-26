@@ -1,5 +1,4 @@
 import React from 'react'
-import { TbCalendarQuestion } from "react-icons/tb";
 
 
 const NotificationItem = ({ icon, title,  time, message }) => {
