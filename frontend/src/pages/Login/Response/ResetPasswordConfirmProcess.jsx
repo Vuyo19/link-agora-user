@@ -15,7 +15,7 @@ async function resetPasswordResponse(password, user_token) {
 
     try { 
 
-
+        
         const response = await fetch(url, {
           method: 'POST',
           headers: headers,

@@ -1,17 +1,17 @@
 /* navsidebar.css */
 
 /* Sticky sidebar */
+/* NavSidebar.css */
 .sticky-sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 80px; /* Initial width when closed */
-    background-color: #0e0e0e;
-    color: white;
-    transition: width 0.5s;
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-    z-index: 50;
-  }
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #0e0e0e;
+  z-index: 50;
+  /* Add other styles as needed */
+}
+
   
   /* Expand the sidebar */
   .sticky-sidebar.open {
@@ -25,4 +25,6 @@
     display: none;
   }
 }
+
+
   

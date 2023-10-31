@@ -14,11 +14,15 @@ function DropdownButton({ onProvinceChange }) {
  
   return (
     <div>
+<<<<<<< HEAD
 <select id="Provinces" 
         class="bg-gray-50 border border-gray-300 text-sm font-medium h-14 leading-none text-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full"
         value={province}
         onChange={handleProvinceChange}
         >
+=======
+<select id="Provinces" class="bg-gray-50 border border-teal-600 text-sm font-medium h-14 leading-none text-gray-800 rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full">
+>>>>>>> frontend-branch
   <option selected>Choose a province</option>
   <option value="Eastern Cape">Eastern Cape</option>
         <option value="Free StateS">Free State</option>

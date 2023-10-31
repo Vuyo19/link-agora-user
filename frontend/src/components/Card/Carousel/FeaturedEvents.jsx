@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import poster from "../../../assets/event1poster.jpg"; // Replace with processed image
-import poster2 from "../../../assets/event2poster.jpeg"; // Replace with processed image
-import poster3 from "../../../assets/event3poster.jpeg"; // Replace with processed image
+import poster from "../../../assets/event1poster.jpg"; 
+import poster2 from "../../../assets/event2poster.jpeg"; 
+import poster3 from "../../../assets/event3poster.jpeg"; 
 
 import { ChevronLeft } from "lucide-react";
 import { ChevronRight } from "lucide-react";
@@ -87,7 +87,7 @@ const FeaturedEvents = () => {
   return (
     <div className="max-w-sm mx-auto">
       <div className="relative">
-        <h3 className="font-bold mb-4 text-lg ">Upcoming Events</h3>
+        <h3 className="font-bold mb-4 text-lg ">Featured Events</h3>
         <div
           className="bg-white border-gray-200 border p-4 rounded-lg"
           onMouseEnter={handleMouseEnter}
@@ -136,7 +136,7 @@ const FeaturedEvents = () => {
         >
           <ChevronLeft
             size={32}
-            className="text-gray-600 bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
+            className="text-gray-600 hover:text-white bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
           />
         </button>
         <button
@@ -145,7 +145,7 @@ const FeaturedEvents = () => {
         >
           <ChevronRight
             size={32}
-            className="text-gray-600 bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
+            className="text-gray-600 hover:text-white bg-white mx-2 cursor-pointer rounded-md hover:bg-[#007f66]  border-2"
           />
         </button>
       </div>
