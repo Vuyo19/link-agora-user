@@ -11,7 +11,7 @@ const InvitationItem = ({
   eventVenue,
   eventStatus,
   statusColor,
-  progressBarWidth,
+  textColor,
 }) => {
   const [isEventDetailsOpen, setIsEventDetailsOpen] = useState(false);
 
@@ -33,8 +33,8 @@ const InvitationItem = ({
       </td>
       <td className="px-12 py-3.5 text-sm font-bold text-left rtl:text-right text-black">
         <div
-          className="inline px-3 py-1 text-sm font-normal rounded-full text-red-500 gap-x-2"
-          style={{ background: statusColor }}
+          className="inline px-3 py-1 text-sm font-normal rounded-full gap-x-2"
+          style={{ background: statusColor, color: textColor }}
         >
           {eventStatus}
         </div>
@@ -49,21 +49,12 @@ const InvitationItem = ({
           <h2 className="text-sm font-normal text-black">{eventVenue}</h2>
         </div>
       </td>
-      <td className="px-4 py-3.5 text-sm text-left rtl:text-right text-black">
-        <div className="w-48 h-1.5 bg-[#FFD8D8] overflow-hidden rounded-full">
-          <div
-            className="bg-red-500 w-2/3 h-1.5"
-            style={{ width: progressBarWidth }}
-            aria-label="Progress bar"
-          ></div>
-        </div>
-      </td>
       {/* Open Event Details Button */}
       <td className="relative py-3.5 px-4">
         {/* Wrap the button with a Link component */}
         <div className="block">
           <button
-            className="px-1 py-1 text-white transition-colors duration-200 rounded-md bg-[#8A2623] hover:bg-[#01663E]"
+            className="px-1 py-1 text-white transition-colors duration-200 rounded-md bg-[#01663E] hover:bg-[#8A2623]"
             onClick={openEventDetails}
           >
             {/* arrow icon */}

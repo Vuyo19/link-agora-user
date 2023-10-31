@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CalendarDays } from "lucide-react";
 import { CircleDashed } from "lucide-react";
 import { MapPin } from "lucide-react";
@@ -6,7 +6,8 @@ import { Users } from "lucide-react";
 import { Binary } from "lucide-react";
 import { UserSquare } from "lucide-react";
 import { X } from "lucide-react";
-import { Upload } from 'lucide-react';
+
+import poster from "../../assets/event3poster.jpeg";
 
 const InvitationDetailsModal = ({
   onClose,
@@ -17,6 +18,16 @@ const InvitationDetailsModal = ({
   capacity,
   code,
 }) => {
+  const [isImageModalOpen, setImageModalOpen] = useState(false);
+
+  const openImageModal = () => {
+    setImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setImageModalOpen(false);
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="fixed inset-0 bg-black opacity-40"></div>
@@ -24,7 +35,7 @@ const InvitationDetailsModal = ({
         <div className="inline-flex items-center justify-between w-full">
           {/* Modal Heading */}
           <h3 className="font-bold text-xl sm:text-2xl text-gray-800">
-            Invite Request
+          Invite Request
           </h3>
           {/* Close Modal Button */}
           <button
@@ -34,7 +45,6 @@ const InvitationDetailsModal = ({
             <X size={18} className="text-white" />
             Close
           </button>
-          {/* //----- endof Button ----// */}
         </div>
 
         {/* Modal Subheading */}
@@ -44,32 +54,35 @@ const InvitationDetailsModal = ({
 
         {/* Elements of modal */}
         <div>
-          {/* Add Event Cover */}
-          <div class="col-span-2 items-center justify-center w-full mt-5">
-            <label
-              htmlFor="description"
-              className="text-base font-medium text-gray-900"
-            >
-              Add cover
-            </label>
+          {/* View Event Cover */}
+          <div
+  className="overflow-hidden mx-auto rounded-lg mb-6 mt-6 cursor-pointer relative"
+  onClick={openImageModal}
+  style={{ position: "relative" }}
+>
+  <img
+    src={poster}
+    alt="yolo"
+    className="w-full h-44 max-h-60 object-cover"
+  />
+  {/* Add the overlay element after the image */}
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the opacity as needed
+    }}
+  ></div>
+  
+  {/* Add the text element with a higher z-index */}
+  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white text-opacity-90 cursor-pointer" style={{ zIndex: 1 }}>
+    <span className="text-sm">Click to view full poster</span>
+  </div>
+</div>
 
-            <label
-              for="dropzone-file"
-              class="flex flex-col items-center justify-center w-full h-40 mt-2 mb-[3rem] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
-            >
-              <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              < Upload size={24} color="#6B7280"/>
-                <p class="mb-2 mt-2 text-sm text-gray-500">
-                  <span class="font-semibold">Click to upload</span> or drag and
-                  drop
-                </p>
-                <p class="text-xs text-gray-500">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px)
-                </p>
-              </div>
-              <input id="dropzone-file" type="file" class="hidden" />
-            </label>
-          </div>
           {/* //---- endof ----// */}
 
           {/* Creator Info */}
@@ -143,7 +156,7 @@ const InvitationDetailsModal = ({
         {/* Option Buttons */}
         <div className="flex flex-col justify-center space-y-4">
           <button className="px-6 py-2 text-[#03663F] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#03663F] hover:text-white">
-            Approve Invite
+            Accept Invite
           </button>
           <button className="px-6 py-2 text-[#8A2623] font-bold bg-white border-[#DADADA] border-2 rounded-full hover:bg-[#8A2623] hover:text-white">
             Decline Invite
@@ -151,6 +164,28 @@ const InvitationDetailsModal = ({
         </div>
         {/* //---- endof ----// */}
       </div>
+
+      {/* Modal for Full Image */}
+      {isImageModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black opacity-40"></div>
+          <div className="relative bg-white rounded-lg">
+            <img
+              src={poster}
+              alt="Full Image"
+              className="w-full h-auto max-h-[30rem]"
+              onClick={closeImageModal}
+            />
+            <button
+              className="absolute top-2 right-2 bg-[#01663E] text-white rounded-full p-2 cursor-pointer"
+              onClick={closeImageModal}
+            >
+              <X size={18} />
+            </button>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 };

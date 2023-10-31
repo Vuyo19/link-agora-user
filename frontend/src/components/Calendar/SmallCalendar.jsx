@@ -2,27 +2,18 @@ import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../util";
-import { ChevronLeft } from 'lucide-react';
-import { ChevronRight } from 'lucide-react';
-
-
-
+import { ChevronLeft } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export default function SmallCalendar() {
-  const [currentMonthIdx, setCurrentMonthIdx] = useState(
-    dayjs().month()
-  );
+  const [currentMonthIdx, setCurrentMonthIdx] = useState(dayjs().month());
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   useEffect(() => {
     setCurrentMonth(getMonth(currentMonthIdx));
   }, [currentMonthIdx]);
 
-  const {
-    monthIndex,
-    setSmallCalendarMonth,
-    setDaySelected,
-    daySelected,
-  } = useContext(GlobalContext);
+  const { monthIndex, setSmallCalendarMonth, setDaySelected, daySelected } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     setCurrentMonthIdx(monthIndex);
@@ -42,7 +33,7 @@ export default function SmallCalendar() {
     if (nowDay === currDay) {
       return "bg-[#007f66] rounded-lg text-white";
     } else if (currDay === slcDay) {
-      return "bg-[#ace1af] rounded-lg text-[#e9ffdb] font-bold";
+      return "bg-[#8A2623] rounded-lg text-white font-bold";
     } else {
       return "";
     }
@@ -51,19 +42,23 @@ export default function SmallCalendar() {
     <div className="mt-9">
       <header className="flex justify-between">
         <p className="text-[#007f66] font-bold">
-          {dayjs(new Date(dayjs().year(), currentMonthIdx)).format(
-            "MMMM YYYY"
-          )}
+          {dayjs(new Date(dayjs().year(), currentMonthIdx)).format("MMMM YYYY")}
         </p>
         <div>
-      {/* Left Arrow button */}
-      <button onClick={handlePrevMonth}>
-      <ChevronLeft size={24} className="text-gray-600 mx-2 cursor-pointer rounded-md border-gray-400 hover:border-[#007f66]  border-2"/>
-      </button>
-      {/* Right Arrow button */}
-      <button onClick={handleNextMonth}>
-      <ChevronRight size={24} className="text-gray-600 mx-2 cursor-pointer rounded-md border-gray-400 hover:border-[#007f66]  border-2"/>
-      </button>
+          {/* Left Arrow button */}
+          <button onClick={handlePrevMonth}>
+            <ChevronLeft
+              size={24}
+              className="text-gray-600 mx-2 cursor-pointer rounded-md border-gray-400 hover:border-[#007f66]  border-2"
+            />
+          </button>
+          {/* Right Arrow button */}
+          <button onClick={handleNextMonth}>
+            <ChevronRight
+              size={24}
+              className="text-gray-600 mx-2 cursor-pointer rounded-md border-gray-400 hover:border-[#007f66]  border-2"
+            />
+          </button>
         </div>
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
