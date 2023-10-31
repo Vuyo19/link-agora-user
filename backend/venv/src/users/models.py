@@ -66,7 +66,7 @@ class CustomUser(AbstractUser):
 
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=50, null=True)
-    last_name = models.CharField(max_length=50, null=True)
+    surname = models.CharField(max_length=50, null=True)
     title = models.CharField(max_length=100)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     date_of_birth = models.DateField()
@@ -80,18 +80,28 @@ class CustomUser(AbstractUser):
     upload = models.FileField(upload_to='user_uploads/')
     reasons_for_joining = models.ManyToManyField('Reason', choices=REASONS_CHOICES)
     job_title = models.CharField(max_length=100)
-    role = models.CharField(max_length=5, choices=ROLE_CHOICES, null=True)  # Role field added here
     
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     
     objects = UserManager()
     
+    EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'surname', 'title', 'gender', 'date_of_birth', 'age', 'race', 'mobile', 'branch_province', 'branch_region', 'job_title']
 
     def __str__(self):
-        return self.email
+        return self.email 
+    
+# Generating the password reset link for the user.
+ 
+class PasswordResetLink(models.Model):
+    uidb64 = models.CharField(max_length=100)
+    token = models.CharField(max_length=100)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  # Associate the link with a user
+
+    def __str__(self):
+        return f"Password Reset Link for {self.user.username}" 
     
 # Reasons for joining model
 class Reason(models.Model):

@@ -1,8 +1,7 @@
-// Function to process the login 
+// Function to process the login  
+async function loginUserResponse(email, password) { 
 
-async function authenticateUserProcess(email, password) { 
-
-    const url = "http://127.0.0.1:8000/users/login/"  
+    const url = "http://127.0.0.1:8000/users/api/login/"  
 
     const requestData = {
         user_email: email, 
@@ -19,10 +18,16 @@ async function authenticateUserProcess(email, password) {
           body: JSON.stringify(requestData),
         });  
 
-        if (response.ok) {
-            const responseData = await response.json(); 
+        if (response.ok) { 
+          
+            const responseData = await response.json();  
+
+            if(responseData.message == "successful") {
+              responseData.authenticated = true; 
+            } else {
+              responseData.authenticated = false; 
+            }
             
-            alert(responseData.message)  
             return responseData; // Update events_table state  
   
           } else { 
@@ -39,11 +44,7 @@ async function authenticateUserProcess(email, password) {
 
     } 
 
-
-    
-
-
-
 }   
 
-export default authenticateUserProcess; 
+
+export default loginUserResponse; 

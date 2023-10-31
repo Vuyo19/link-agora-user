@@ -7,6 +7,9 @@ import Profile from "./pages/Profile/Profile";
 import NeedHelp from "./pages/NeedHelp/NeedHelp";
 import UpcomingEvents from "./pages/Dashboard/Dasboard Sub-Pages/UpcomingEvents";
 import Login from "./pages/Login/Login";
+import ForgotPassword from "./pages/Login/ForgotPassword";
+import ForgotPasswordRequestSent from "./pages/Login/ForgotPasswordRequestSent";
+import ResetPasswordConfirm from "./pages/Login/ResetPasswordConfirm";
 import NavSideBar from "./components/Exterior/Sidebar/NavSidebar";
 import NavBar from "./components/Exterior/Navbar/NavBar";
 import "./App.css";
@@ -37,8 +40,10 @@ const App = () => {
     <div className="flex bg-[#fafbfd] w-screen">
       {shouldShowNav && <NavSideBar />}
       <div className="flex flex-col flex-grow">
-        {shouldShowNav && <NavBar />}
-        <div className="flex-grow">
+        {shouldShowNav && <NavBar />} 
+
+        <div className="flex-grow"> 
+
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/schedule" element={<Schedule />} />
@@ -58,8 +63,38 @@ const App = () => {
                   <Login />
                 </LoginLayout>
               }
-            />
-          </Routes>
+            />  
+
+            {/* The Forgot password Page*/}
+            <Route
+              path="/password/reset"
+              element={
+                <LoginLayout>
+                  <ForgotPassword />
+                </LoginLayout>
+              }
+            />  
+
+            <Route
+              path="/password/reset/confirm/:uidb64/:token"
+              element={
+                <LoginLayout>
+                  <ResetPasswordConfirm />
+                </LoginLayout>
+              }
+            />   
+
+            <Route
+              path="/password/reset/sent"
+              element={
+                <LoginLayout>
+                  <ForgotPasswordRequestSent />
+                </LoginLayout>
+              }
+            />  
+
+          </Routes> 
+
         </div>
       </div>
     </div>

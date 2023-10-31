@@ -98,13 +98,13 @@ WSGI_APPLICATION = 'booking_system_user.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'link_agora_db',  
+        'NAME': 'link_agora_db',
         'USER': 'postgres',
-        'PASSWORD': 'catchYouL8er',  # Replace with your actual database password
+        'PASSWORD': 'catchYouL8er',
         'HOST': 'link-agora-db.cukbjiamverv.eu-west-2.rds.amazonaws.com',
-        'PORT': '5432',  # Default PostgreSQL port
+        'PORT': '5432',      # Default PostgreSQL port
     }
-}  
+}
 
 
 # Password validation

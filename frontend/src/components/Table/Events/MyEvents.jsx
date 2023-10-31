@@ -5,8 +5,6 @@ import { FiSearch } from "react-icons/fi";
 import MyEventItem from "./MyEventItem";
 
 
-
-
 function MyEvents() {
 
   return (
