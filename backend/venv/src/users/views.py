@@ -24,12 +24,11 @@ def sign_in_user(request):
         email = data.get('user_email')  
         password = data.get('user_password')   
 
+        # Authenticating the user to check if the email exists and the password exists. 
         user = authenticate(request, email=email, password=password)
 
         if user is not None: 
-            print("User exists")  
-
-            return JsonResponse({'message': 'successful'})
+            return JsonResponse({'message': 'success'})
         else:
             # Authentication failed
             return JsonResponse({'message': 'failed'}) 
