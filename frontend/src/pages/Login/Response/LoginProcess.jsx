@@ -22,7 +22,7 @@ async function loginUserResponse(email, password) {
           
             const responseData = await response.json();  
 
-            if(responseData.message == "successful") {
+            if(responseData.message == "success") {
               responseData.authenticated = true; 
             } else {
               responseData.authenticated = false; 
