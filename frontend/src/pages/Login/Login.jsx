@@ -21,13 +21,15 @@ const Login = () => {
                   <div className='mt-8'>
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="bg-black border-2 border-[#2A805D] text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="name@bmf.com"
-                      required
-                    />
+                    type="email"
+                    name="email"
+                    id="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                    title="Please enter a valid email address"
+                    className="bg-black border-2 border-[#2A805D] text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="name@bmf.com"
+                    required
+                  />
                   </div>
                   <div>
                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
@@ -37,7 +39,7 @@ const Login = () => {
                       id="password"
                       placeholder="••••••••"
                       className="bg-black border-2 border-[#2A805D] text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
+                      required 
                     />
                   </div>
                   <div className="flex items-center justify-between">
